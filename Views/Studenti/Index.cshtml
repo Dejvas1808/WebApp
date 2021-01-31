@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebApp.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Studenti</h1>
+<br />
+<br />
+<p>
+    <a asp-action="Create">Dodajte novog studenta</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImeStud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrezStud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatRod)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImeStud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrezStud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatRod)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredite</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obrišite</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApp.Models.Polaganje>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Polaganja</h1>
+<br />
+<br />
+
+<p>
+    <a asp-action="Create">Dodajte nove podatke o polaganju</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImeStudenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImeProfesora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Polozio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImeStudenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImeProfesora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Polozio)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredite</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obrišite</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br />
+<br />
+<form type="get">
+    Unesite tekst za filtiriranje:
+    <input type="search" name="search" />
+    <input type="submit" value="Pretraži" />
+</form>
